@@ -1,0 +1,164 @@
+/* src/App.css */
+
+/* Base styles */
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #fefefe; /* Primary background */
+  color: #636e72; /* Secondary text color */
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.app-header {
+  background-color: #5da5ed; /* Header background */
+  color: #ffffff; /* Header title color */
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.app-header h1 {
+  margin: 0;
+  font-size: 1.5em;
+  font-family: 'Helvetica Neue', sans-serif;
+}
+
+.content-container {
+  display: flex;
+  flex: 1;
+}
+
+.sidebar {
+  width: 200px;
+  background-color: #9be4d6; /* Sidebar background */
+  padding: 20px;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar li {
+  padding: 15px 0;
+  color: #001f3f; /* Secondary text color */
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.sidebar li:hover {
+  background-color: #dfe6e9; /* Widget title background */
+  color: #2d3436; /* Primary text color on hover */
+}
+
+.main-content {
+  flex: 1;
+  padding: 20px;
+  background-color: #ffffff; /* Secondary background */
+  overflow-y: auto;
+}
+
+.wrapper2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.wrapper {
+  width: 90%;
+  max-width: 1000px; /* Reduce the max-width */
+  margin: 20px auto;
+  background-color: #ffffff; /* Secondary background */
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.Dropdown {
+  width: 100%;
+  max-width: 300px;
+  margin-bottom: 20px;
+}
+
+.chart-wrapper {
+  width: 100%;
+  margin: 20px 0;
+  background-color: #ffffff; /* Secondary background */
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h3 {
+  text-align: center;
+  color: #2d3436; /* Primary text color */
+  margin-bottom: 20px;
+  background-color: #dfe6e9; /* Widget title background */
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.Select__control {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 8px;
+  background-color: #ffffff; /* Secondary background */
+}
+
+.Select__menu {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-top: 4px;
+}
+
+.Select__option--is-focused {
+  background-color: #f4f4f4;
+}
+
+/* Additional aesthetic improvements */
+.wrapper, .Dropdown, .chart-wrapper {
+  transition: all 0.3s ease;
+}
+
+.wrapper:hover, .Dropdown:hover, .chart-wrapper:hover {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+h3 {
+  font-family: 'Helvetica Neue', sans-serif;
+  font-weight: 600;
+}
+
+.Select__control, .Select__menu {
+  font-family: 'Helvetica Neue', sans-serif;
+}
+
+/* Add responsive design */
+@media (max-width: 768px) {
+  .wrapper, .chart-wrapper {
+    padding: 15px;
+  }
+
+  .Dropdown {
+    width: 80%;
+  }
+}
+
+@media (max-width: 480px) {
+  .wrapper, .chart-wrapper {
+    padding: 10px;
+  }
+
+  .Dropdown {
+    width: 100%;
+  }
+}
