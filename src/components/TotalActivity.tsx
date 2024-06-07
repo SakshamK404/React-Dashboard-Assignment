@@ -77,3 +77,5 @@ const TotalActivities: React.FC<Props> = ({ totalActivity, name }) => {
 };
 
 export default TotalActivities;
+
+//this is a comment
