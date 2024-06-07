@@ -1,12 +1,26 @@
 /* src/App.css */
 
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+
 /* Base styles */
 body {
-  font-family: 'Arial', sans-serif;
+  font-family: 'Roboto', sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #fefefe; /* Primary background */
-  color: #636e72; /* Secondary text color */
+  background-color: #f5f5f5; /* Light background for better contrast */
+  color: #2c3e50; /* Dark text color for readability */
+}
+
+/* Utility classes for typography */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+}
+
+p {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
 }
 
 .app-container {
@@ -16,29 +30,46 @@ body {
 }
 
 .app-header {
-  background-color: #5da5ed; /* Header background */
-  color: #ffffff; /* Header title color */
+  background-color: #3498db; /* Primary color */
+  color: #ffffff; /* Light text color */
   padding: 20px;
   text-align: center;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
 }
 
 .app-header h1 {
   margin: 0;
-  font-size: 1.5em;
-  font-family: 'Helvetica Neue', sans-serif;
+  font-size: 1.8em;
 }
 
 .content-container {
   display: flex;
   flex: 1;
+  margin-top: 80px; /* Adjust margin to make space for fixed header */
 }
 
 .sidebar {
-  width: 200px;
-  background-color: #9be4d6; /* Sidebar background */
+  width: 220px;
+  background-color: #2c3e50; /* Sidebar background */
   padding: 20px;
   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  transition: width 0.3s ease;
+}
+
+.sidebar.collapsed {
+  width: 60px;
+}
+
+.toggle-button {
+  display: flex;
+  justify-content: flex-end;
+  cursor: pointer;
+  margin-bottom: 10px;
+  color: #ffffff;
 }
 
 .sidebar ul {
@@ -48,21 +79,31 @@ body {
 }
 
 .sidebar li {
-  padding: 15px 0;
-  color: #001f3f; /* Secondary text color */
+  padding: 15px 10px;
+  color: #bdc3c7; /* Light text color */
   cursor: pointer;
-  transition: background 0.3s;
+  transition: background 0.3s, color 0.3s;
+  display: flex;
+  align-items: center;
 }
 
 .sidebar li:hover {
-  background-color: #dfe6e9; /* Widget title background */
-  color: #2d3436; /* Primary text color on hover */
+  background-color: #34495e; /* Darker background on hover */
+  color: #ecf0f1; /* Light text color on hover */
+}
+
+.sidebar li .fa-icon {
+  margin-right: 20px; /* Increased space between icon and text */
+}
+
+.sidebar.collapsed li .fa-icon {
+  margin-right: 0;
 }
 
 .main-content {
   flex: 1;
   padding: 20px;
-  background-color: #ffffff; /* Secondary background */
+  background-color: #f5f5f5; /* Light background */
   overflow-y: auto;
 }
 
@@ -75,12 +116,17 @@ body {
 
 .wrapper {
   width: 90%;
-  max-width: 1000px; /* Reduce the max-width */
+  max-width: 1000px;
   margin: 20px auto;
-  background-color: #ffffff; /* Secondary background */
+  background-color: #ffffff; /* Light background */
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.wrapper:hover {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
 .Dropdown {
@@ -92,26 +138,33 @@ body {
 .chart-wrapper {
   width: 100%;
   margin: 20px 0;
-  background-color: #ffffff; /* Secondary background */
+  background-color: #ffffff; /* Light background */
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.chart-wrapper:hover {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
 h3 {
   text-align: center;
-  color: #2d3436; /* Primary text color */
+  color: #2d3436; /* Dark text color */
   margin-bottom: 20px;
-  background-color: #dfe6e9; /* Widget title background */
+  background-color: #dfe6e9; /* Light background */
   padding: 10px;
   border-radius: 8px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
 }
 
 .Select__control {
   border: 1px solid #ccc;
   border-radius: 4px;
   padding: 8px;
-  background-color: #ffffff; /* Secondary background */
+  background-color: #ffffff; /* Light background */
 }
 
 .Select__menu {
@@ -124,25 +177,7 @@ h3 {
   background-color: #f4f4f4;
 }
 
-/* Additional aesthetic improvements */
-.wrapper, .Dropdown, .chart-wrapper {
-  transition: all 0.3s ease;
-}
-
-.wrapper:hover, .Dropdown:hover, .chart-wrapper:hover {
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-}
-
-h3 {
-  font-family: 'Helvetica Neue', sans-serif;
-  font-weight: 600;
-}
-
-.Select__control, .Select__menu {
-  font-family: 'Helvetica Neue', sans-serif;
-}
-
-/* Add responsive design */
+/* Responsive design */
 @media (max-width: 768px) {
   .wrapper, .chart-wrapper {
     padding: 15px;
@@ -161,4 +196,45 @@ h3 {
   .Dropdown {
     width: 100%;
   }
+}
+
+/* Footer styling */
+.app-footer {
+  background-color: #3498db; /* Footer background color */
+  color: #ffffff; /* Footer text color */
+  padding: 10px 20px;
+  text-align: center;
+  bottom: 0;
+  width: 100%;
+  box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+  font-family: 'Roboto', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.app-footer p {
+  margin: 0;
+  display: flex;
+  align-items: center;
+}
+
+.icon {
+  color: #ffffff;
+  margin-left: 10px;
+  font-size: 1.2em;
+  transition: color 0.3s ease;
+}
+
+.icon:hover {
+  color: #0077b5; /* LinkedIn brand color */
+}
+
+/* Different hover colors for GitHub and Gmail icons */
+.icon:nth-of-type(2):hover {
+  color: #333; /* GitHub brand color */
+}
+
+.icon:nth-of-type(3):hover {
+  color: #d14836; /* Gmail brand color */
 }

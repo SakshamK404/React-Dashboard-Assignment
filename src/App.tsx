@@ -1,5 +1,3 @@
-// src/App.tsx
-
 import React, { useState } from "react";
 import Select from "react-select";
 import Records from "./data.json";
@@ -9,7 +7,10 @@ import ComparisonActiveDaysGraph from "./components/ComparisonActiveDaysGraph";
 import ComparisonTotalActivityGraph from "./components/ComparisonTotalActivityGraph";
 import { AuthorWorklogRow, RootObject, DayWiseActivityItem } from "./types";
 import "./App.css";
-
+import SecondaryHeader from "./components/SecondaryHeader";
+import Footer from "./components/Footer"; // Import Footer
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTachometerAlt, faChartBar, faCalendarDay, faBars } from "@fortawesome/free-solid-svg-icons";
 import {
   LineChart,
   Line,
@@ -37,6 +38,7 @@ const options = (Records as RootObject).data.AuthorWorklog.rows.map(
 const App: React.FC = () => {
   const [selectedEmail, setSelectedEmail] = useState<string | null>(null);
   const [activeSection, setActiveSection] = useState<string>("dashboard");
+  const [isSidebarCollapsed, setIsSidebarCollapsed] = useState<boolean>(false);
 
   const handleEmailChange = (selectedOption: any) => {
     setSelectedEmail(selectedOption ? selectedOption.value : null);
@@ -124,6 +126,7 @@ const App: React.FC = () => {
       case "totalActivity":
         return (
           <>
+            <SecondaryHeader title="Total Activity" />
             <div className="Dropdown">
               <Select options={options} onChange={handleEmailChange} />
             </div>
@@ -136,6 +139,7 @@ const App: React.FC = () => {
       case "dayWiseActivity":
         return (
           <>
+            <SecondaryHeader title="Day Wise Activity" />
             <div className="Dropdown">
               <Select options={options} onChange={handleEmailChange} />
             </div>
@@ -148,6 +152,7 @@ const App: React.FC = () => {
       default:
         return (
           <>
+            <SecondaryHeader title="Dashboard" />
             <div className="wrapper">
               <ComparisonActiveDaysGraph data={records} emails={selectedEmails} />
             </div>
@@ -165,15 +170,25 @@ const App: React.FC = () => {
         <h1>Activity Dashboard</h1>
       </header>
       <div className="content-container">
-        <div className="sidebar">
+        <div className={`sidebar ${isSidebarCollapsed ? 'collapsed' : ''}`}>
+          <div className="toggle-button" onClick={() => setIsSidebarCollapsed(!isSidebarCollapsed)}>
+            <FontAwesomeIcon icon={faBars} />
+          </div>
           <ul>
-            <li onClick={() => setActiveSection("dashboard")}>Dashboard</li>
-            <li onClick={() => setActiveSection("totalActivity")}>Total Activity</li>
-            <li onClick={() => setActiveSection("dayWiseActivity")}>Day Wise Activity</li>
+            <li onClick={() => setActiveSection("dashboard")}>
+              <FontAwesomeIcon icon={faTachometerAlt} /> {!isSidebarCollapsed && 'Dashboard'}
+            </li>
+            <li onClick={() => setActiveSection("totalActivity")}>
+              <FontAwesomeIcon icon={faChartBar} /> {!isSidebarCollapsed && 'Total Activity'}
+            </li>
+            <li onClick={() => setActiveSection("dayWiseActivity")}>
+              <FontAwesomeIcon icon={faCalendarDay} /> {!isSidebarCollapsed && 'Day Wise Activity'}
+            </li>
           </ul>
         </div>
         <div className="main-content">{renderSection()}</div>
       </div>
+      <Footer /> {/* Add the Footer component */}
     </div>
   );
 };
