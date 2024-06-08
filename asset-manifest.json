@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/SakshamK404/React-Dashboard-Assignment/static/css/main.de162acf.css",
+    "main.js": "/SakshamK404/React-Dashboard-Assignment/static/js/main.d6b1196b.js",
+    "static/js/453.0ece7051.chunk.js": "/SakshamK404/React-Dashboard-Assignment/static/js/453.0ece7051.chunk.js",
+    "index.html": "/SakshamK404/React-Dashboard-Assignment/index.html",
+    "main.de162acf.css.map": "/SakshamK404/React-Dashboard-Assignment/static/css/main.de162acf.css.map",
+    "main.d6b1196b.js.map": "/SakshamK404/React-Dashboard-Assignment/static/js/main.d6b1196b.js.map",
+    "453.0ece7051.chunk.js.map": "/SakshamK404/React-Dashboard-Assignment/static/js/453.0ece7051.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.de162acf.css",
+    "static/js/main.d6b1196b.js"
+  ]
+}
